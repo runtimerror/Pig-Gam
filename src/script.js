@@ -83,7 +83,7 @@ const saveScore = function () {
   updateScreen(currentPlayer.DOMscore, currentPlayer.score);
   updateScreen(currentPlayer.DOMcurrent, currentPlayer.currentScore);
 
-  if (currentPlayer.score >= 10) {
+  if (currentPlayer.score >= 100) {
     currentPlayer.DOMplayer.classList.add('player--winner');
     currentPlayer.DOMplayer.classList.remove('player--active');
     alert(`Player ${currentPlayer.id} wins!`);
