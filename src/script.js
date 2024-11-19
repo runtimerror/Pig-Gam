@@ -29,6 +29,7 @@ let currentPlayer = player1;
 // Switches from current player to other player and updates DOM classes
 function switchPlayer() {
   currentPlayer.DOMplayer.classList.remove('player--active');
+
   if (currentPlayer == player1) {
     currentPlayer = player2;
     btnRoll.disabled = true;
@@ -48,6 +49,7 @@ function updateScreen(variable, content) {
 
 // Resets the score and all DOM elements to 0, and the player to 1
 const resetScore = function () {
+  currentPlayer.DOMplayer.classList.remove('player--winner');
   players.forEach(player => {
     player.score = 0;
     player.currentScore = 0;
@@ -81,9 +83,10 @@ const saveScore = function () {
   updateScreen(currentPlayer.DOMscore, currentPlayer.score);
   updateScreen(currentPlayer.DOMcurrent, currentPlayer.currentScore);
 
-  if (currentPlayer.score >= 100) {
+  if (currentPlayer.score >= 10) {
+    currentPlayer.DOMplayer.classList.add('player--winner');
+    currentPlayer.DOMplayer.classList.remove('player--active');
     alert(`Player ${currentPlayer.id} wins!`);
-    resetScore();
   } else {
     switchPlayer();
   }
